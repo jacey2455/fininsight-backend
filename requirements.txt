@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+anthropic
+PyPDF2
+requests
+python-multipart
