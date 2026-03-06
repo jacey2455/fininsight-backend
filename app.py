@@ -18,14 +18,7 @@ app.add_middleware(
 )
 
 # ===== API Key =====
-api_key = None
-try:
-    with open(".env", "r") as f:
-        for line in f:
-            if "ANTHROPIC_API_KEY" in line:
-                api_key = line.strip().split("=")[1]
-except:
-    pass
+api_key = os.environ.get("ANTHROPIC_API_KEY") or open(".env").read().split("ANTHROPIC_API_KEY=")[1].split("\n")[0] if os.path.exists(".env") else None
 
 client = anthropic.Anthropic(api_key=api_key, base_url="https://api.yunjintao.com/")
 
